@@ -6,13 +6,13 @@ import static com.pasichnyk.DatabaseOperation.*;
 
 public class Main {
 
-    static String Url = "jdbc:mysql://localhost:3306/sqltest";
-    static String username = "root";
-    static String password = "xalimonenko001";
+    public final static String Url = "jdbc:mysql://localhost:3306/sqltest";
+    public final static String username = "root";
+    public final static String password = "xalimonenko001";
 
     public static void main(String[] args) {
 
-        List<Users> users = getUsersOrderetByName();
+        List<Users> users = getUsersOrderByName();
         for (Users all : users) {
             System.out.println(all);
         }

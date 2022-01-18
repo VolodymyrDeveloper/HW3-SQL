@@ -8,7 +8,7 @@ import static com.pasichnyk.Main.*;
 
 public class DatabaseOperation {
 
-    static List<Users> getUsersOrderetByName() {
+    public static List<Users> getUsersOrderByName() {
         List<Users> users = new ArrayList<>();
         String sql = "SELECT * FROM users ORDER BY username";
         try (Connection connection = DriverManager.getConnection(Url, username, password);
@@ -29,7 +29,7 @@ public class DatabaseOperation {
         return users;
     }
 
-    static List<Address> searchAddressByCityName(String cityName) {
+    public static List<Address> searchAddressByCityName(String cityName) {
         List<Address> addresses = new ArrayList<>();
         String sql = "SELECT * FROM address WHERE city =?;";
         try (Connection connection = DriverManager.getConnection(Url, username, password);
@@ -50,7 +50,7 @@ public class DatabaseOperation {
         return addresses;
     }
 
-    static void deleteEmployeeById(int idEmployee) {
+    public static void deleteEmployeeById(int idEmployee) {
         String sql = "DELETE FROM employee WHERE employeeId = ?;";
         try (Connection connection = DriverManager.getConnection(Url, username, password);
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -62,7 +62,7 @@ public class DatabaseOperation {
         System.out.println("com.pasichnyk.Employee with " + idEmployee + " id successfully removed ");
     }
 
-    static void printDataByWorkigDate(String workingDate) {
+    public static void printDataByWorkigDate(String workingDate) {
         String sql = "SELECT person_name, occupation FROM employee WHERE working_date = ?;";
         try (Connection connection = DriverManager.getConnection(Url, username, password);
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -78,7 +78,7 @@ public class DatabaseOperation {
         }
     }
 
-    static void printEmployeeAndUsers() {
+    public static void printEmployeeAndUsers() {
         String sql = "SELECT employee.person_name, employee.working_date,employee.working_hours," +
                 "users.email_address,users.age FROM employee INNER JOIN users ON employee.employeeId = users.id;";
         try (Connection connection = DriverManager.getConnection(Url, username, password);
